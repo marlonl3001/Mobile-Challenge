@@ -11,15 +11,20 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.mdr.mobilechallenge.App
 import br.com.mdr.mobilechallenge.R
 import br.com.mdr.mobilechallenge.databinding.DialogAddSpotBinding
+import br.com.mdr.mobilechallenge.model.Categoria
 import br.com.mdr.mobilechallenge.model.PontoTuristico
 import br.com.mdr.mobilechallenge.util.ConfiguracaoFirebase
+import br.com.mdr.mobilechallenge.util.Constants.Companion.CATEGORIA_FIREBASE_TABLE
 import br.com.mdr.mobilechallenge.util.Constants.Companion.IMG_REQUEST_CODE
 import br.com.mdr.mobilechallenge.util.Constants.Companion.PONTOS_BUSCA_TABLE
 import br.com.mdr.mobilechallenge.util.Constants.Companion.PONTOS_TURISTICOS_TABLE
@@ -39,6 +44,7 @@ class MainViewModel : ViewModel() {
     var dialogAddSpotBinding: DialogAddSpotBinding? = null
     var mainFragment: MainFragment? = null
     var showList = MutableLiveData(false)
+    private lateinit var spCategorias: Spinner
 
     var imgSpot: Uri? = null
         set(value) {
@@ -60,11 +66,36 @@ class MainViewModel : ViewModel() {
         dialogAddSpotBinding = DialogAddSpotBinding.inflate(inflater)
         val builder = AlertDialog.Builder(App.activity!!)
         builder.setView(dialogAddSpotBinding!!.root)
+
+        spCategorias = dialogAddSpotBinding!!.spCategorias
+        spCategorias.onItemSelectedListener = spinnerCategoriasListener()
+
+        val strCategorias = mutableListOf<String>()
+
+        val firebaseRef = ConfiguracaoFirebase.getFirebase()!!
+            .child(CATEGORIA_FIREBASE_TABLE)
+
+        firebaseRef.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) = Unit
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (snapshot in dataSnapshot.children) {
+                        val categoria = snapshot.getValue(Categoria::class.java)!!
+                        strCategorias.add(categoria.nome)
+                    }
+                    val adapterCategorias = ArrayAdapter(App.context,
+                        R.layout.spinner_item, strCategorias)
+
+                    spCategorias.adapter = adapterCategorias
+                }
+            }
+        })
+
         val show = builder.show()
         dialogAddSpotBinding!!.edtCor.addTextChangedListener(edtCorTextChange())
         dialogAddSpotBinding!!.btnSalvar.setOnClickListener {
             pontoTuristico.nome = dialogAddSpotBinding!!.edtNome.text.toString()
-            pontoTuristico.categoria = dialogAddSpotBinding!!.edtCategoria.text.toString()
+            pontoTuristico.categoria = dialogAddSpotBinding!!.spCategorias.selectedItem.toString()
             pontoTuristico.endereco = dialogAddSpotBinding!!.edtLocal.text.toString().trim()
             salvaPonto()
             show.dismiss()
@@ -72,6 +103,16 @@ class MainViewModel : ViewModel() {
         dialogAddSpotBinding!!.imgPonto.setOnClickListener {
             tiraFoto()
         }
+    }
+
+    private fun spinnerCategoriasListener() = object: AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
+            val strCat = spCategorias.selectedItem.toString()
+            pontoTuristico.categoria = strCat
+            //dialogAddSpotBinding!!.txtCategoria.text = strCat
+        }
+
+        override fun onNothingSelected(p0: AdapterView<*>?) = Unit
     }
 
     private fun tiraFoto() {

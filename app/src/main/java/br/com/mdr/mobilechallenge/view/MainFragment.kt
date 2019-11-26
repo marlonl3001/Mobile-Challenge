@@ -228,7 +228,9 @@ class MainFragment : Fragment(), OnMapReadyCallback {
                                 else -> "Default"
                             }
 
-                        val cat = Categoria(idFirebase, nomeCat)
+                        val cat = Categoria()
+                        cat.id = idFirebase
+                        cat.nome = nomeCat
                         firebaseRef.child(idFirebase).setValue(cat)
                     }
                 }
