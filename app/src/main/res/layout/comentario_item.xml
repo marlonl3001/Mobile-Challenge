@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="comentario"
+                type="br.com.mdr.mobilechallenge.model.Comentario"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/txtUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin8"
+                android:text="@{comentario.usuario}"
+                android:textStyle="bold"
+                tools:text="Marlon D. Rocha"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+                android:id="@+id/imgNota"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="@dimen/margin8"
+                android:contentDescription="@string/content_description"
+                app:layout_constraintStart_toEndOf="@id/txtUsuario"
+                app:layout_constraintTop_toTopOf="@id/txtUsuario"
+                app:srcCompat="@drawable/ic_star"/>
+
+        <TextView
+                android:id="@+id/txtNota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin4"
+                android:textColor="@color/colorAccent"
+                tools:text="4"
+                app:layout_constraintStart_toEndOf="@id/imgNota"
+                app:layout_constraintTop_toTopOf="@id/txtUsuario"/>
+
+        <TextView
+                android:id="@+id/txtComentario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{comentario.msg}"
+                tools:text="Parque muito ruim"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtUsuario"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

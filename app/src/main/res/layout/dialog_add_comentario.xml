@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin16">
+
+        <TextView
+                android:id="@+id/txtReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nova_avaliacao"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+        <RatingBar
+                android:id="@+id/ratingPonto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin8"
+                android:layout_gravity="center_horizontal"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutComentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin16"
+                android:hint="@string/comentario"
+                android:layout_gravity="center_horizontal">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtComentario"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:inputType="textCapSentences"
+                    android:imeOptions="actionNext"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin16"
+                android:text="@string/add_comentario"
+                android:textColor="@color/colorAccent"
+                app:backgroundTint="@android:color/holo_orange_light"/>
+    </LinearLayout>
+</layout>

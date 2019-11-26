@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1065431406433",
+    "firebase_url": "https://mobile-challenge-408fb.firebaseio.com",
+    "project_id": "mobile-challenge-408fb",
+    "storage_bucket": "mobile-challenge-408fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065431406433:android:2928b521bc9903dc151720",
+        "android_client_info": {
+          "package_name": "br.com.mdr.mobilechallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065431406433-cu7c3v9frnf0e54bdh8jv6i046mastdf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwRt1ZZBceamexVEr0T_6wV7qlR3VdUcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065431406433-cu7c3v9frnf0e54bdh8jv6i046mastdf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

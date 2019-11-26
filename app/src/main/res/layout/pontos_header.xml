@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="cabecalho"
+                type="String"/>
+    </data>
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin4"
+            android:paddingEnd="@dimen/margin4"
+            android:paddingTop="@dimen/margin4">
+
+        <TextView
+                android:id="@+id/txtHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin16"
+                android:text="@{cabecalho}"
+                android:textColor="@android:color/darker_gray"
+                android:textStyle="bold"
+                tools:text="Recentes"/>
+    </LinearLayout>
+</layout>

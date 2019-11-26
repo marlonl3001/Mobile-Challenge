@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/pontosTuristicosFragment"
+            android:icon="@drawable/ic_star"
+            android:orderInCategory="1"
+            android:title="Favoritos"
+            app:showAsAction="ifRoom"/>
+
+    <item
+            android:id="@+id/mainFragment"
+            android:icon="@drawable/ic_location_pin"
+            android:orderInCategory="2"
+            android:title="Home"
+            app:showAsAction="ifRoom"/>
+
+    <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_person"
+            android:orderInCategory="3"
+            android:title="Perfil"
+            app:showAsAction="ifRoom"/>
+
+</menu>

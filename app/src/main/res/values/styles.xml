@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="materialButtonStyle">@style/AppTheme.Button</item>
+        <item name="materialCardViewStyle">@style/AppTheme.CardView</item>
+        <item name="textInputStyle">@style/AppTheme.TextInput</item>
+    </style>
+
+    <style name="AppTheme.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+
+    <style name="AppTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="cornerRadius">5dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet_dialog_fragment</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+</resources>

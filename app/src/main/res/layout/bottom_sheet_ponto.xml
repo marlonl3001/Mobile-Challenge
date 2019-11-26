@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="ponto"
+                type="br.com.mdr.mobilechallenge.model.PontoTuristico"/>
+        <variable
+                name="showComments"
+                type="Boolean"/>
+
+        <variable
+                name="clickListener"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="showReview"
+                type="Boolean"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutDetalhes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{showReview ? View.GONE : View.VISIBLE}"
+                tools:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                    android:id="@+id/imgPonto"
+                    android:layout_width="0dp"
+                    android:layout_height="220dp"
+                    android:contentDescription="@string/content_description"
+                    android:scaleType="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/txtNome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin16"
+                    android:layout_marginStart="@dimen/margin16"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:singleLine="true"
+                    android:text="@{ponto.nome}"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    tools:text="Jardim Botânico"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnFavorito"
+                    app:layout_constraintTop_toBottomOf="@id/imgPonto"/>
+
+            <TextView
+                    android:id="@+id/txtLocal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin16"
+                    android:layout_marginStart="@dimen/margin16"
+                    android:singleLine="true"
+                    android:text="@{ponto.endereco}"
+                    tools:text="Jardim Botânico - Curitiba"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnFavorito"
+                    app:layout_constraintTop_toBottomOf="@id/txtNome"/>
+
+            <ImageView
+                    android:id="@+id/btnFavorito"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/margin16"
+                    android:background="@drawable/btn_favorite_background"
+                    android:contentDescription="@string/content_description"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{clickListener}"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_favorite_border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/txtNome"/>
+
+            <RatingBar
+                    android:id="@+id/ratingPonto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:isIndicator="true"
+                    android:rating="@{ponto.nota}"
+                    app:layout_constraintStart_toStartOf="@id/txtNome"
+                    app:layout_constraintTop_toBottomOf="@id/btnFavorito"/>
+
+            <TextView
+                    android:id="@+id/txtDescCategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:text="@string/categoria"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/txtNome"
+                    app:layout_constraintTop_toBottomOf="@id/ratingPonto"/>
+
+            <TextView
+                    android:id="@+id/txtCategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{ponto.categoria}"
+                    app:layout_constraintStart_toStartOf="@id/txtNome"
+                    app:layout_constraintTop_toBottomOf="@id/txtDescCategoria"
+                    tools:text="Parques"/>
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtDescSobre"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/margin16"-->
+            <!--android:text="@string/sobre"-->
+            <!--android:textColor="@android:color/darker_gray"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintStart_toStartOf="@id/txtNome"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/txtCategoria"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtSobre"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="@dimen/margin16"-->
+            <!--android:text="@{ponto.descricao}"-->
+            <!--app:layout_constraintStart_toStartOf="@id/txtNome"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/txtDescSobre"-->
+            <!--tools:text="Parque fundado em 1991, com uma estufa..."/>-->
+
+            <TextView
+                    android:id="@+id/txtComentarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:text="@string/comentarios"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/txtNome"
+                    app:layout_constraintTop_toTopOf="@id/btnComentario"
+                    app:layout_constraintBottom_toBottomOf="@id/btnComentario"/>
+
+            <ImageView
+                    android:id="@+id/btnComentario"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:background="@drawable/btn_favorite_background"
+                    android:backgroundTint="@color/colorAccent"
+                    android:contentDescription="@string/content_description"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="@{clickListener}"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/ic_chat"
+                    app:layout_constraintEnd_toEndOf="@id/btnFavorito"
+                    app:layout_constraintTop_toBottomOf="@id/txtCategoria"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerComentarios"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:visibility="@{showComments ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="@id/txtNome"
+                    app:layout_constraintEnd_toEndOf="@id/txtNome"
+                    app:layout_constraintTop_toBottomOf="@id/btnComentario"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+                android:id="@+id/layoutDadosComentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin16"
+                android:visibility="@{showReview ? View.VISIBLE : View.GONE}"
+                tools:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                    android:id="@+id/txtReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nova_avaliacao"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+            <RatingBar
+                    android:id="@+id/ratingPontoReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin8"
+                    android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutComentario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:hint="@string/comentario"
+                    android:layout_gravity="center_horizontal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtComentario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:inputType="textMultiLine"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalvar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:text="@string/add_comentario"
+                    android:textColor="@color/colorAccent"
+                    android:onClick="@{clickListener}"
+                    app:backgroundTint="@android:color/holo_orange_light"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

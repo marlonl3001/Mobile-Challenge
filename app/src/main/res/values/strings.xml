@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Mobile Challenge</string>
+    <string name="google_maps_key" translatable="false">
+        AIzaSyDP-de0Z8liaJrWd6OnenI0Mc08GU45noc
+    </string>
+    <string name="facebook_app_id">427635181518064</string>
+    <string name="fb_login_protocol_scheme">fb427635181518064</string>
+    <string name="content_description">Image</string>
+    <string name="sign_in_fb">Iniciar com Facebook</string>
+    <string name="sign_up_fb">Sign up with Facebook</string>
+    <string name="localizacao_n_encontrada">Localização não encontrada.</string>
+    <string name="card_transition">cardView</string>
+    <string name="meu_local">Meu Local</string>
+    <string name="msg_localizacao_n_encontrada">Localização não encontrada. Ative o serviço de localização do dispositivo.</string>
+    <string name="localizacao_n_ativada">Localização não ativada</string>
+    <string name="pesquise_aqui">Pesquise aqui</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_categorias">Categorias</string>
+    <string name="hint_local">Localização</string>
+    <string name="hint_pin_color">Cor Ponto</string>
+    <string name="add_ponto">Adicionar Ponto</string>
+    <string name="categoria">Categoria</string>
+    <string name="sobre">Sobre</string>
+    <string name="comentarios">Comentários</string>
+    <string name="comentario">Comentário</string>
+    <string name="add_comentario">Comentar</string>
+    <string name="nova_avaliacao">Nova Avaliação</string>
+</resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="hasLocation"
+                type="Boolean"/>
+
+        <variable
+                name="viewModel"
+                type="br.com.mdr.mobilechallenge.viewmodel.MainViewModel"/>
+
+        <variable
+                name="showList"
+                type="Boolean"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.MainFragment">
+
+        <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/txtNoLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/background_dark"
+                android:padding="@dimen/margin8"
+                android:textAlignment="center"
+                android:textColor="@color/colorError"
+                android:text="@string/localizacao_n_encontrada"
+                android:visibility="@{safeUnbox(hasLocation) ? View.GONE : View.VISIBLE}"
+                tools:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardEndereco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin16"
+                android:layout_marginEnd="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin16"
+                android:transitionName="@string/card_transition"
+                app:cardElevation="@dimen/margin8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtNoLocation">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:animateLayoutChanges="true"
+                        android:orientation="horizontal">
+
+                    <ImageView
+                            android:id="@+id/imgPesquisa"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
+                            android:layout_width="50dp"
+                            android:contentDescription="@string/content_description"
+                            android:scaleType="center"
+                            app:srcCompat="@drawable/ic_search"/>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtEndereco"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:afterTextChanged="@{(editable)->viewModel.edtBuscaTextChange(editable)}"
+                            android:background="@android:color/white"
+                            android:hint="@string/pesquise_aqui"
+                            android:onClick="@{viewModel.clickListener()}"
+                            android:singleLine="true"/>
+
+                    <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/margin16"
+                            android:layout_marginBottom="@dimen/margin16"
+                            android:background="@color/gray"/>
+
+                    <ImageView
+                            android:id="@+id/imgAdd"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
+                            android:layout_width="50dp"
+                            android:clickable="true"
+                            android:contentDescription="@string/content_description"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:scaleType="center"
+                            android:onClick="@{viewModel.clickListener()}"
+                            app:srcCompat="@drawable/ic_add"/>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerPontos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:visibility="@{showList ? View.VISIBLE : View.GONE}"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
