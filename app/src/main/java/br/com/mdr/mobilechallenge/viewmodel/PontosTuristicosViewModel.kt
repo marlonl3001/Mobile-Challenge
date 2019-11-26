@@ -27,6 +27,16 @@ class PontosTuristicosViewModel : ViewModel() {
 
                     for(snapShot in dataSnapShot.children) {
                         val ponto = snapShot.getValue(PontoTuristico::class.java)!!
+                        if (ponto.comentarios != null) {
+                            var nota = 0f
+                            var count = 0
+                            for(comentario in ponto.comentarios!!) {
+                                count += 1
+                                nota += comentario.nota
+                            }
+                            nota = (nota / count)
+                            ponto.nota = nota
+                        }
                         App.activity!!.pontosTuristicos.add(ponto)
                         if (ponto.favorito)
                             itens.add(ponto)
