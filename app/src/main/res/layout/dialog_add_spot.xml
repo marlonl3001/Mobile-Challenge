@@ -57,16 +57,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
 
-            <!--<TextView-->
-                    <!--android:id="@+id/txtCategoria"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginStart="@dimen/margin16"-->
-                    <!--android:layout_marginEnd="@dimen/margin16"-->
-                    <!--android:textColor="@color/colorPrimary"-->
-                    <!--app:layout_constraintTop_toTopOf="@id/spCategorias"-->
-                    <!--app:layout_constraintBottom_toBottomOf="@id/spCategorias"/>-->
-
             <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spCategorias"
                     android:layout_width="match_parent"
@@ -74,25 +64,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtDescCidade"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--<com.google.android.material.textfield.TextInputLayout-->
-                <!--android:id="@+id/layoutCategoria"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginEnd="@dimen/margin16"-->
-                <!--android:layout_marginStart="@dimen/margin16"-->
-                <!--android:layout_marginTop="@dimen/margin16"-->
-                <!--android:nextFocusDown="@id/layoutLocal"-->
-                <!--android:hint="@string/hint_categorias"-->
-                <!--android:layout_gravity="center_horizontal">-->
-
-            <!--<com.google.android.material.textfield.TextInputEditText-->
-                    <!--android:id="@+id/edtCategoria"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:inputType="textPersonName"-->
-                    <!--android:imeOptions="actionNext"/>-->
-        <!--</com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutLocal"
