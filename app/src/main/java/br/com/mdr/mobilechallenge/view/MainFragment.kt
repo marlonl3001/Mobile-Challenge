@@ -5,12 +5,10 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.location.*
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -48,9 +46,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.main_fragment.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.util.*
 
 class MainFragment : Fragment(), OnMapReadyCallback {
     private var mMap: GoogleMap? = null
@@ -326,7 +321,6 @@ class MainFragment : Fragment(), OnMapReadyCallback {
 
             mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(mUserPosition, mGoogleMapZoom))
         }
-        //fetchAddress()
     }
 
     private fun getMarkerIcon(color: String): BitmapDescriptor {
@@ -360,17 +354,4 @@ class MainFragment : Fragment(), OnMapReadyCallback {
         }
         return userLocation
     }
-
-
-//    private fun bitmapDescriptorFromVector(context: Context, vectorDrawableResourceId: Int): BitmapDescriptor {
-//        val background = ContextCompat.getDrawable(context, R.drawable.ic_place)
-//        background?.setBounds(0, 0, background.intrinsicWidth, background.intrinsicHeight)
-//        val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
-//        vectorDrawable?.setBounds(40, 20, vectorDrawable.intrinsicWidth + 40, vectorDrawable.intrinsicHeight + 20)
-//        val bitmap = Bitmap.createBitmap(background!!.intrinsicWidth, background.intrinsicHeight, Bitmap.Config.ARGB_8888)
-//        val canvas = Canvas(bitmap)
-//        background.draw(canvas)
-//        vectorDrawable?.draw(canvas)
-//        return BitmapDescriptorFactory.fromBitmap(bitmap)
-//    }
 }

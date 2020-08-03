@@ -59,11 +59,6 @@ class PontosTuristicosAdapter(val mainViewModel: MainViewModel): RecyclerView.Ad
         }
     }
 
-//    override fun onBindViewHolder(holder: PontosTuristicosViewHolder, position: Int) {
-//        val item = itens!![position]
-//        holder.bind(item)
-//    }
-
     override fun getItemCount() = if (itens != null) itens!!.size else 0
 
     @Suppress("UNCHECKED_CAST")

@@ -61,7 +61,6 @@ class PontoTuristicoBottomSheet(val ponto: PontoTuristico): BottomSheetDialogFra
             }
             R.id.btnComentario -> {
                 binding.showReview = true
-                //mostraDialogComentario()
             }
             R.id.btnSalvar -> {
                 val msg = binding.edtComentario.text.toString().trim()
@@ -78,8 +77,8 @@ class PontoTuristicoBottomSheet(val ponto: PontoTuristico): BottomSheetDialogFra
                 ponto.salvar()
                 binding.ponto = ponto
                 binding.executePendingBindings()
-                //Utils.showSuccesSnack("Comentário adicionado.")
                 binding.showReview = false
+
             }
         }
     }

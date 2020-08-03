@@ -12,6 +12,7 @@
                 android:id="@+id/imgPonto"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:contentDescription="@string/content_description"
                 android:scaleType="center"
                 android:background="@color/cardview_shadow_start_color"
                 app:srcCompat="@drawable/ic_camera"/>
